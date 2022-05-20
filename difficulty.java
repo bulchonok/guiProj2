@@ -6,6 +6,6 @@ public class difficulty {
     int DucksMaxAmount;
     int monyMultiplier;
 
-    
+
 
 }
