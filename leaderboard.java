@@ -12,6 +12,7 @@ public class leaderboard {
         String ReadData=getlb();
         String writelb = ReadData+lbRecord;
         fileWriter.write(writelb);
+        fileWriter.close();
 
     }
 

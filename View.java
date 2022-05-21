@@ -27,6 +27,7 @@ public class View extends JFrame {
 
 
 
+
         Quit.setName("quit");
         Quit.addActionListener(new lmenuListener());
 
@@ -39,6 +40,7 @@ public class View extends JFrame {
 
         NewGame.setName("newgame");
         NewGame.addActionListener(new lmenuListener());
+        NewGame.putClientProperty("panel",panel);
 
 
         Font titleFont= Font.createFont(Font.TRUETYPE_FONT, getClass().getResourceAsStream("/font/DOOM-font.ttf"));
@@ -81,8 +83,8 @@ public class View extends JFrame {
 
         mainmenu.add(panel);
 
-
-        jFrame.setSize(1344,756);
+        jFrame.setResizable(false);
+        jFrame.setSize(1400,800);
         jFrame.setVisible(true);
         jFrame.setLocationRelativeTo(null);
         jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

@@ -25,10 +25,11 @@ public class lmenuListener implements ActionListener {
                     ex.printStackTrace();
                 }
             }
-            case "new game" -> {
+            case "newgame" -> {
+                panel.setVisible(false);
                 MyThread thread = new MyThread();
                 thread.start();
-
+                new gameScene();
             }
 
         }
