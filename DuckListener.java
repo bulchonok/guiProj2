@@ -8,12 +8,13 @@ public class DuckListener implements ActionListener {
         JButton duck = (JButton) (e.getSource());
 
         int DuckId = Integer.parseInt(duck.getName());
-        if (!gameScene.arrOfDucks[DuckId].getDamage(1)){
-            //duck.setVisible(false);
+        Duck thisDuck = Duck.find(DuckId);
+        if (!thisDuck.getDamage(1,duck)){
+
             duck.setEnabled(false);
             //getmoney
         }
-        duck.setText(String.valueOf(gameScene.arrOfDucks[DuckId].HP));
+        duck.setText(String.valueOf(thisDuck.HP));
 
     }
 }

@@ -1,4 +1,5 @@
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
@@ -16,7 +17,7 @@ public class View extends JFrame {
          panel=new JPanel();
          LBpanel =new JPanel();
         JPanel menuButtons=new JPanel();
-         NewGame= new JButton("New Game",new ImageIcon("/src/icons/button.gif"));
+         NewGame= new JButton("New Game");
          Leaderboard= new JButton("Leaderboard");
          Tutorial= new JButton("Tutorial");
          Quit= new JButton("Quit");
@@ -25,8 +26,8 @@ public class View extends JFrame {
         NewGame.setBorder(BorderFactory.createEmptyBorder());
         NewGame.setContentAreaFilled(false);
 
-
-
+Image img = ImageIO.read(gameScene.class.getResource("/icons/button.jpg"));
+        NewGame.setIcon(new ImageIcon(img));
 
         Quit.setName("quit");
         Quit.addActionListener(new lmenuListener());
