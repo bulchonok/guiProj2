@@ -27,7 +27,7 @@ public class GameThreadTimer extends Thread {
                 gameScene.Timer.setText("Time: 00:"+mins+":"+secs);
 
                 player.updatescore();
-
+                gameScene.Score.setText("SCORE:\n"+player.getScore());
 
             } catch (InterruptedException e) {
 

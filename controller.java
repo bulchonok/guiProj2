@@ -1,10 +1,20 @@
 import javax.swing.*;
 
+
 public class controller extends JFrame {
-    public static void main(String[] args) {
+    static boolean gameover=false;
+
+
+    public static void killGameThread(Thread thread) {
+        thread.interrupt();
+        if (!gameover){
+            gameover=true;
+            GameEnd();
+        }
 
     }
-    public static void killGameThread(Thread thread){
-        thread.interrupt();
+
+    public static void GameEnd() {
+        GameEndScreen gameEndScreen=new GameEndScreen(player.getScore());
     }
 }

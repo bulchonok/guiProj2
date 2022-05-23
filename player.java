@@ -10,7 +10,7 @@ public class player {
     }
 
     public static void updatescore(){
-        score= (maxmoney + Duck.ducksKilled) * GameThreadTimer.getTime();
+        score= (maxmoney + Duck.ducksKilled) * GameThreadTimer.getTime()*MyThread.diffMultiplyer;
     }
 
     public static void getDamage() {
