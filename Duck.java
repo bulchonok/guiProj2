@@ -7,6 +7,11 @@ public class Duck extends JButton {
     static int indexCounter = 0, ducksAlive = 0, counter = 0;
     int HP;
     int money;
+    protected static int ducksKilled;
+
+    public static int getDucksKilled() {
+        return ducksKilled;
+    }
 
     enum color {yellow, orange, red, purple, blue, lightblue, silver};
     String DuckColor;
@@ -90,6 +95,7 @@ public class Duck extends JButton {
     public boolean getDamage(int dmg, JButton button) {
         this.HP -= dmg;
         if (HP <= 0) {
+            ducksKilled++;
             ducksAlive--;
             button.setVisible(false);
             aliveList.remove(this);

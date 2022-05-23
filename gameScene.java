@@ -10,25 +10,30 @@ import java.util.List;
 
 public class gameScene extends JFrame {
 
-    static List<JLabel> heartlist=new ArrayList<>();
+    static List<JLabel> heartlist = new ArrayList<>();
     static LinkedList<JButton> buttonList = new LinkedList<JButton>();
     static JPanel GamePanel = new JPanel();
     static JPanel scene = new JPanel();
     static JPanel usersInv = new JPanel();
+    static JTextArea Timer = new JTextArea();
 
     public gameScene() {
         JTextArea jTextArea = new JTextArea();
-        jTextArea.setText("your damage is:"+player.dmg);
+        jTextArea.setText("your damage is:" + player.dmg);
         jTextArea.setEditable(false);
 
         JButton levelup = new JButton("dmg up");
         levelup.addActionListener(new playerActionListener());
-        levelup.putClientProperty("dmgcounter",jTextArea);
+        levelup.putClientProperty("dmgcounter", jTextArea);
 //
-
-
+        Timer = new JTextArea();
+        Timer.setText("Timer: " + "00:00:00");
+        Timer.setEditable(false);
         //
+        Timer.setPreferredSize(new Dimension(100, 60));
 
+
+        usersInv.add(Timer);
         usersInv.add(jTextArea);
         add(scene);
         scene.add(GamePanel);
@@ -44,7 +49,7 @@ public class gameScene extends JFrame {
         GamePanel.setLayout(null);
         GamePanel.setPreferredSize(new Dimension(1000, 700));
 
-showHP();
+        showHP();
 
         jTextArea.setBackground(usersInv.getBackground());
 
@@ -56,33 +61,33 @@ showHP();
 
 
     }
-public static void showHP(){
-    BufferedImage myPicture = null;
-    BufferedImage myPictureBlack = null;
-    try {
-        myPicture = ImageIO.read(new File("src/icons/heart1.png"));
-        myPictureBlack = ImageIO.read(new File("src/icons/heart0.png"));
-    } catch (IOException e) {
-        e.printStackTrace();
+
+    public static void showHP() {
+        BufferedImage myPicture = null;
+        BufferedImage myPictureBlack = null;
+        try {
+            myPicture = ImageIO.read(new File("src/icons/heart1.png"));
+            myPictureBlack = ImageIO.read(new File("src/icons/heart0.png"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+        for (int i = 0; i < player.HP; i++) {
+            JLabel picLabel = new JLabel(new ImageIcon(myPicture));
+
+            usersInv.add(picLabel);
+            heartlist.add(picLabel);
+        }
+        for (int i = 0; i < player.MaxHP - player.HP; i++) {
+            JLabel picLabelBlack = new JLabel(new ImageIcon(myPictureBlack));
+            usersInv.add(picLabelBlack);
+            heartlist.add(picLabelBlack);
+        }
+
     }
 
-
-
-    for (int i = 0; i < player.HP; i++) {
-        JLabel picLabel = new JLabel(new ImageIcon(myPicture));
-
-        usersInv.add(picLabel);
-        heartlist.add(picLabel);
-    }
-    for (int i = 0; i < player.MaxHP-player.HP; i++) {
-        JLabel picLabelBlack = new JLabel(new ImageIcon(myPictureBlack));
-        usersInv.add(picLabelBlack);
-        heartlist.add(picLabelBlack);
-    }
-
-    }
-
-    public static void deleteHP(){
+    public static void deleteHP() {
         for (int i = 0; i < heartlist.size(); i++) {
             usersInv.remove(heartlist.get(i));
         }

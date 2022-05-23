@@ -13,6 +13,8 @@ public class lmenuListener implements ActionListener {
         JPanel panel = (JPanel) jButton.getClientProperty("panel");
         // JPanel gamepanel = (JPanel) ;
         JTextArea lbText = (JTextArea) jButton.getClientProperty("lbText");
+        JPanel diffs = (JPanel) jButton.getClientProperty("diffs");
+
 
         switch (jButton.getName()) {
             case "quit" -> System.exit(0);
@@ -27,8 +29,32 @@ public class lmenuListener implements ActionListener {
             }
             case "newgame" -> {
                 panel.setVisible(false);
-                MyThread thread = new MyThread();
+                diffs.setVisible(true);
+            }
+            case "newgame1"->{
+                diffs.setVisible(false);
+                MyThread thread = new MyThread(1);
                 thread.start();
+                GameThreadTimer gameThreadTimer = new GameThreadTimer();
+                gameThreadTimer.start();
+                View.jFrame.setVisible(false);
+                new gameScene();
+            }
+            case "newgame2"->{
+                diffs.setVisible(false);
+                MyThread thread = new MyThread(3);
+                thread.start();
+                GameThreadTimer gameThreadTimer = new GameThreadTimer();
+                gameThreadTimer.start();
+                View.jFrame.setVisible(false);
+                new gameScene();
+            }
+            case "newgame3"->{
+                diffs.setVisible(false);
+                MyThread thread = new MyThread(6);
+                thread.start();
+                GameThreadTimer gameThreadTimer = new GameThreadTimer();
+                gameThreadTimer.start();
                 View.jFrame.setVisible(false);
                 new gameScene();
             }
