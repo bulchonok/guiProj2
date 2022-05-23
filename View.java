@@ -14,10 +14,10 @@ public class View extends JFrame {
 
         JPanel mainmenu=new JPanel();
         jFrame.add(mainmenu);
-        JLabel Title=new JLabel();
+         JLabel Title=new JLabel();
          panel=new JPanel();
          LBpanel =new JPanel();
-        JPanel menuButtons=new JPanel();
+         JPanel menuButtons=new JPanel();
          NewGame= new JButton("New Game");
          Leaderboard= new JButton("Leaderboard");
          Tutorial= new JButton("Tutorial");
@@ -27,7 +27,7 @@ public class View extends JFrame {
         NewGame.setBorder(BorderFactory.createEmptyBorder());
         NewGame.setContentAreaFilled(false);
 
-Image img = ImageIO.read(gameScene.class.getResource("/icons/button.jpg"));
+        Image img = ImageIO.read(gameScene.class.getResource("/icons/button.jpg"));
         NewGame.setIcon(new ImageIcon(img));
 
         Quit.setName("quit");

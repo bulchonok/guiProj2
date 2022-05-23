@@ -9,7 +9,7 @@ public class DuckListener implements ActionListener {
 
         int DuckId = Integer.parseInt(duck.getName());
         Duck thisDuck = Duck.find(DuckId);
-        if (!thisDuck.getDamage(1,duck)){
+        if (!thisDuck.getDamage(player.dmg,duck)){
 
             duck.setEnabled(false);
             //getmoney

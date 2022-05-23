@@ -38,7 +38,7 @@ public class Duck extends JButton {
 
 
         x = 0;
-        y = counter % 5 * 140;
+        y = (int)(counter*(Math.random()*5)) % 5 * 140;
 
         switch (difficulty) {//change jbutton icon
             case 1 -> {
