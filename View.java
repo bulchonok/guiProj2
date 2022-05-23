@@ -7,9 +7,10 @@ import java.io.IOException;
 public class View extends JFrame {
     protected static JButton NewGame,Quit, Leaderboard, Tutorial;
     protected JPanel panel, LBpanel;
+    static JFrame jFrame;
 
     public View() throws IOException, FontFormatException {
-        JFrame jFrame = new JFrame();
+         jFrame = new JFrame();
 
         JPanel mainmenu=new JPanel();
         jFrame.add(mainmenu);
@@ -85,7 +86,7 @@ Image img = ImageIO.read(gameScene.class.getResource("/icons/button.jpg"));
         mainmenu.add(panel);
 
         jFrame.setResizable(false);
-        jFrame.setSize(1400,800);
+        jFrame.setSize(1400,900);
         jFrame.setVisible(true);
         jFrame.setLocationRelativeTo(null);
         jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

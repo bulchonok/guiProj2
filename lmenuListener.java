@@ -29,6 +29,7 @@ public class lmenuListener implements ActionListener {
                 panel.setVisible(false);
                 MyThread thread = new MyThread();
                 thread.start();
+                View.jFrame.setVisible(false);
                 new gameScene();
             }
 

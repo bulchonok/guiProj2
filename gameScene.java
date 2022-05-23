@@ -9,21 +9,29 @@ public class gameScene extends JFrame {
     static LinkedList<JButton> buttonList = new LinkedList<JButton>();
     static JPanel GamePanel = new JPanel();
     static JPanel scene = new JPanel();
+    static JPanel usersInv = new JPanel();
 
     public gameScene() {
+        JTextArea jTextArea = new JTextArea();
+        jTextArea.setText("your damage is:");
+        jTextArea.setEditable(false);
 
-
-        //add(scene);
-        add(GamePanel);
-
+        usersInv.add(jTextArea);
+        add(scene);
+        scene.add(GamePanel);
+        scene.add(usersInv);
         //scene.setBackground(Color.yellow);
         //scene.setLayout(new BoxLayout(scene,BoxLayout.PAGE_AXIS));
         //scene.add(GamePanel);
+        usersInv.setBackground(Color.yellow);
+        usersInv.setLayout(new FlowLayout(FlowLayout.LEFT));
+        usersInv.setPreferredSize(new Dimension(1000, 200));
         GamePanel.setBackground(Color.magenta);
         GamePanel.setLayout(null);
-        GamePanel.setPreferredSize(new Dimension(1000,700));
+        GamePanel.setPreferredSize(new Dimension(1000, 700));
 
 
+        jTextArea.setBackground(usersInv.getBackground());
 
         setResizable(false);
         setSize(1400, 900);
@@ -62,13 +70,11 @@ public class gameScene extends JFrame {
         Test.addActionListener(new DuckListener());
 
 
-
         System.out.println("---------");
         System.out.println(Test);
-        Test.setBounds(duck.x, duck.y,130,130);
+        Test.setBounds(duck.x, duck.y, 130, 130);
         gameScene.GamePanel.add(Test);
         Test.setVisible(true);
-
 
 
     }
