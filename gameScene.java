@@ -16,9 +16,12 @@ public class gameScene extends JFrame {
     static JPanel scene = new JPanel();
     static JPanel usersInv = new JPanel();
     static JTextArea Timer,Score= new JTextArea();
-
+    static JFrame jFrame;
 
     public gameScene() {
+
+        jFrame = new JFrame();
+        jFrame.add(scene);
         JTextArea jTextArea = new JTextArea();
         jTextArea.setText("your damage is:" + player.dmg);
         jTextArea.setEditable(false);
@@ -43,7 +46,7 @@ public class gameScene extends JFrame {
         usersInv.add(Score);
         usersInv.add(Timer);
         usersInv.add(jTextArea);
-        add(scene);
+
         scene.add(GamePanel);
         scene.add(usersInv);
 
@@ -61,11 +64,11 @@ public class gameScene extends JFrame {
 
         jTextArea.setBackground(usersInv.getBackground());
 
-        setResizable(false);
-        setSize(1400, 900);
-        setVisible(true);
-        setLocationRelativeTo(null);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        jFrame.setResizable(false);
+        jFrame.setSize(1400, 900);
+        jFrame.setVisible(true);
+        jFrame.setLocationRelativeTo(null);
+        jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 
     }

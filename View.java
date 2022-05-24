@@ -23,15 +23,29 @@ public class View extends JFrame {
         panel = new JPanel();
         LBpanel = new JPanel();
 
+        JButton back = new JButton("back");
+        back.addActionListener(new lmenuListener());
+        back.setName("back");
+        back.putClientProperty("LBpanel",LBpanel);
+        back.putClientProperty("panel",panel);
+        back.putClientProperty("diffs",diffs);
+
+        JButton Back = new JButton("back");
+        Back.addActionListener(new lmenuListener());
+        Back.setName("back");
+        Back.putClientProperty("LBpanel",LBpanel);
+        Back.putClientProperty("panel",panel);
+        Back.putClientProperty("diffs",diffs);
 
         JButton Easy = new JButton("easy");
         JButton Hard = new JButton("Hard");
         JButton HELL = new JButton("HELL");
 
-        diffs.setLayout(new BoxLayout(diffs,BoxLayout.PAGE_AXIS));
+        diffs.setLayout(new BoxLayout(diffs, BoxLayout.PAGE_AXIS));
         diffs.add(Easy);
         diffs.add(Hard);
         diffs.add(HELL);
+        diffs.add(Back);
 
         Easy.setName("newgame1");
         Hard.setName("newgame2");
@@ -100,6 +114,7 @@ public class View extends JFrame {
         mainmenu.add(LBpanel);
         LBpanel.setVisible(false);
         LBpanel.add(leaderboardText);
+        LBpanel.add(back);
 
         panel.add(Title, BorderLayout.PAGE_START);
         panel.add(Box.createVerticalStrut(130));

@@ -27,6 +27,11 @@ public class lmenuListener implements ActionListener {
                     ex.printStackTrace();
                 }
             }
+            case "back" -> {
+                panel.setVisible(true);
+                panel2.setVisible(false);
+                diffs.setVisible(false);
+            }
             case "newgame" -> {
                 panel.setVisible(false);
                 diffs.setVisible(true);
@@ -38,7 +43,7 @@ public class lmenuListener implements ActionListener {
                 GameThreadTimer gameThreadTimer = new GameThreadTimer();
                 gameThreadTimer.start();
                 View.jFrame.setVisible(false);
-                new gameScene();
+                gameScene gsc = new gameScene();
             }
             case "newgame2"->{
                 diffs.setVisible(false);
@@ -47,7 +52,7 @@ public class lmenuListener implements ActionListener {
                 GameThreadTimer gameThreadTimer = new GameThreadTimer();
                 gameThreadTimer.start();
                 View.jFrame.setVisible(false);
-                new gameScene();
+                gameScene gsc = new gameScene();
             }
             case "newgame3"->{
                 diffs.setVisible(false);
@@ -56,7 +61,10 @@ public class lmenuListener implements ActionListener {
                 GameThreadTimer gameThreadTimer = new GameThreadTimer();
                 gameThreadTimer.start();
                 View.jFrame.setVisible(false);
-                new gameScene();
+                System.out.println("++++++++++");
+                gameScene gsc = new gameScene();
+
+                System.out.println("++++++++++");
             }
 
         }

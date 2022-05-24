@@ -10,7 +10,9 @@ public class leaderboard {
     public static void updatelb(String lbRecord) throws IOException {
         FileWriter fileWriter = new FileWriter("src\\save\\lb.txt");
         String ReadData=getlb();
+        System.out.println(ReadData+":::::"+lbRecord);
         String writelb = ReadData+lbRecord;
+        System.out.println(writelb+":::::::::::::");
         fileWriter.write(writelb);
         fileWriter.close();
 
