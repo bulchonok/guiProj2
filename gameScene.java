@@ -12,77 +12,78 @@ public class gameScene extends JFrame {
 
     static List<JLabel> heartlist = new ArrayList<>();
     static LinkedList<JButton> buttonList = new LinkedList<JButton>();
+
+    static JFrame jFrame;
+
     static JPanel GamePanel = new JPanel();
     static JPanel scene = new JPanel();
     static JPanel usersInv = new JPanel();
+
     static JTextArea Timer,Score= new JTextArea();
-    static JFrame jFrame;
 
     public gameScene() {
 
         jFrame = new JFrame();
-        jFrame.add(scene);
+
         JTextArea jTextArea = new JTextArea();
+
         jTextArea.setText("your damage is:" + player.dmg);
         jTextArea.setEditable(false);
 
+        jTextArea.setBackground(usersInv.getBackground());
 
-         Score = new JTextArea();
+        Score = new JTextArea();
+        Timer = new JTextArea();
+
         Score.setText("SCORE:\n"+player.getScore());
-        Score.setEditable(false);
+        Timer.setText("Timer: " + "00:00:00");
 
+        Score.setEditable(false);
+        Timer.setEditable(false);
+        Score.setPreferredSize(new Dimension(120, 60));
+        Timer.setPreferredSize(new Dimension(100, 60));
 
         JButton levelup = new JButton("dmg up");
+
         levelup.addActionListener(new playerActionListener());
         levelup.putClientProperty("dmgcounter", jTextArea);
 //
-        Timer = new JTextArea();
-        Timer.setText("Timer: " + "00:00:00");
-        Timer.setEditable(false);
-        //
-        Timer.setPreferredSize(new Dimension(100, 60));
-        Score.setPreferredSize(new Dimension(120, 60));
-
-        usersInv.add(Score);
-        usersInv.add(Timer);
-        usersInv.add(jTextArea);
-
-        scene.add(GamePanel);
-        scene.add(usersInv);
-
-        usersInv.add(levelup);
-
-
         usersInv.setBackground(Color.yellow);
         usersInv.setLayout(new FlowLayout(FlowLayout.LEFT));
         usersInv.setPreferredSize(new Dimension(1000, 200));
+
         GamePanel.setBackground(Color.magenta);
         GamePanel.setLayout(null);
         GamePanel.setPreferredSize(new Dimension(1000, 700));
 
+        usersInv.add(Score);
+        usersInv.add(Timer);
+        usersInv.add(jTextArea);
+        usersInv.add(levelup);
+
+        scene.add(GamePanel);
+        scene.add(usersInv);
+
         showHP();
 
-        jTextArea.setBackground(usersInv.getBackground());
+        jFrame.add(scene);
 
         jFrame.setResizable(false);
         jFrame.setSize(1400, 900);
         jFrame.setVisible(true);
         jFrame.setLocationRelativeTo(null);
         jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-
     }
 
     public static void showHP() {
         BufferedImage myPicture = null;
         BufferedImage myPictureBlack = null;
-        try {
-            myPicture = ImageIO.read(new File("src/icons/heart1.png"));
-            myPictureBlack = ImageIO.read(new File("src/icons/heart0.png"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
+            try {
+                myPicture = ImageIO.read(new File("src/icons/heart1.png"));
+                myPictureBlack = ImageIO.read(new File("src/icons/heart0.png"));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
 
         for (int i = 0; i < player.HP; i++) {
             JLabel picLabel = new JLabel(new ImageIcon(myPicture));
@@ -98,6 +99,7 @@ public class gameScene extends JFrame {
 
     }
 
+
     public static void deleteHP() {
         for (int i = 0; i < heartlist.size(); i++) {
             usersInv.remove(heartlist.get(i));
@@ -107,39 +109,38 @@ public class gameScene extends JFrame {
 
 
     public static void createDuck(Duck duck) {
+
         JButton Test = new JButton();
 
         buttonList.add(Test);
 
         Test.setBorder(BorderFactory.createEmptyBorder());
         Test.setContentAreaFilled(false);
-        try {
-            Image yellowDuck = ImageIO.read(gameScene.class.getResource("/icons/duck.gif"));
-            Image img = yellowDuck;
-            /*switch (arrOfDucks[0].DuckColor){
-                case "yellow"->{
-                    img=yellowDuck;
-                }
-            }*/
 
-            Test.setIcon(new ImageIcon(img));
-            Test.setName(String.valueOf(duck.index));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+            try {
+                Image yellowDuck = ImageIO.read(gameScene.class.getResource("/icons/duck.gif"));
+                Image img = yellowDuck;
+                /*switch (arrOfDucks[0].DuckColor){
+                    case "yellow"->{
+                        img=yellowDuck;
+                    }
+                }*/
+
+                Test.setIcon(new ImageIcon(img));
+                Test.setName(String.valueOf(duck.index));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
 
 
         Test.setText(String.valueOf(duck.HP));
         Test.setName(String.valueOf(duck.getIndex()));
         Test.addActionListener(new DuckListener());
-
-
-        System.out.println("---------");
-        System.out.println(Test);
         Test.setBounds(duck.x, duck.y, 130, 130);
-        gameScene.GamePanel.add(Test);
-        Test.setVisible(true);
 
+        gameScene.GamePanel.add(Test);
+
+        Test.setVisible(true);
 
     }
 }

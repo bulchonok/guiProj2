@@ -1,5 +1,4 @@
 
-
 public class GameThreadTimer extends Thread {
     protected static int Time=0;
 
@@ -13,25 +12,30 @@ public class GameThreadTimer extends Thread {
             if (player.HP<=0){
                 controller.killGameThread(this);
             }
-            try {
-                Thread.sleep(1000);
-                Time++;
-                int seconds,minutes;
-                seconds=Time%60;
-                minutes=Time/60;
-                String secs = null, mins = null;
-                if (seconds<10)secs= "0" + seconds;
-                else secs= String.valueOf(seconds);
-                if (minutes<10)mins= "0" + minutes;
-                else mins= String.valueOf(minutes);
-                gameScene.Timer.setText("Time: 00:"+mins+":"+secs);
+                try {
+                    String secs = null, mins = null;
+                    int seconds,minutes;
 
-                player.updatescore();
-                gameScene.Score.setText("SCORE:\n"+player.getScore());
+                    Thread.sleep(1000);
 
-            } catch (InterruptedException e) {
+                    Time++;
+                    seconds=Time%60;
+                    minutes=Time/60;
 
-            }
+                        if (seconds<10)secs= "0" + seconds;
+                        else secs= String.valueOf(seconds);
+
+                        if (minutes<10)mins= "0" + minutes;
+                        else mins= String.valueOf(minutes);
+
+                    player.updatescore();
+
+                    gameScene.Timer.setText("Time: 00:"+mins+":"+secs);
+                    gameScene.Score.setText("SCORE:\n"+player.getScore());
+
+                } catch (InterruptedException e) {
+                    return;//
+                }
         }
     }
 }

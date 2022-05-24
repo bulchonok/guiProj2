@@ -10,30 +10,26 @@ public class EndListener implements ActionListener {
         JButton jButton = (JButton) e.getSource();
         JTextField jTextField = (JTextField)jButton.getClientProperty("name");
         String name = jTextField.getText();
-        switch (jButton.getName()){
-            case "save"->{
-                try {
-                    controller.save(name);
-                } catch (IOException ex) {
-                    ex.printStackTrace();
+            switch (jButton.getName()){
+                case "save"->{
+                    try {
+                        controller.save(name);
+                    } catch (IOException ex) {
+                        ex.printStackTrace();
+                    }
+
                 }
+                case "cancel"->{
 
+                }
             }
-            case "cancel"->{
-
-            }
-        }
         GameEndScreen.jFrame.setVisible(false);
-
-
-
-
-        try {
-            new View();
-        } catch (IOException eh) {
-            eh.printStackTrace();
-        } catch (FontFormatException eh) {
-            eh.printStackTrace();
-        }
+            try {
+                new View();
+            } catch (IOException eh) {
+                eh.printStackTrace();
+            } catch (FontFormatException eh) {
+                eh.printStackTrace();
+            }
     }
 }

@@ -7,9 +7,10 @@ public class playerActionListener implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         JButton jButton = (JButton) e.getSource();
-        player.levelup();//butto text:money needed for upgrade
-        System.out.println("action performed");
         JTextArea jTextArea=(JTextArea) jButton.getClientProperty("dmgcounter");
+
+        player.levelup();//button text:money needed for upgrade
+
         jTextArea.setText("your damage is:"+player.dmg);
     }
 }

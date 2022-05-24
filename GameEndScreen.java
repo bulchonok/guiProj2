@@ -10,17 +10,31 @@ public class GameEndScreen extends JFrame {
     public GameEndScreen(int Score) {
          jFrame = new JFrame();
         JPanel endPanel = new JPanel();
-        endPanel.setLayout(null);
         JPanel ResultPanel = new JPanel();
         JPanel buttonsPanel = new JPanel();
 
+        endPanel.setLayout(null);
+        ResultPanel.setLayout(null);
+        buttonsPanel.setLayout(new FlowLayout());
 
+        ResultPanel.setPreferredSize(new Dimension(200,100));
+        ResultPanel.setBounds(100,50,400,200);
+        buttonsPanel.setBounds(100,250,400,50);
 
         JTextPane Result = new JTextPane();
-        Result.setText("Your Result is:\n"+Score);
         JTextPane name = new JTextPane();
-        name.setText("enter your name:");
         JTextField Name = new JTextField();
+
+        Result.setText("Your Result is:\n"+Score);
+        name.setText("enter your name:");
+
+        Result.setEditable(false);
+        name.setEditable(false);
+
+        Result.setBounds(100,50,200,60);
+        name.setBounds(100,110,200,40);
+        Name.setBounds(100,150,200,50);
+
 
 //https://stackoverflow.com/questions/3213045/centering-text-in-a-jtextarea-or-jtextpane-horizontal-text-alignment
         StyledDocument doc = Result.getStyledDocument();
@@ -35,24 +49,6 @@ public class GameEndScreen extends JFrame {
 
 //
 
-        Result.setEditable(false);
-        name.setEditable(false);
-
-        Result.setBounds(100,50,200,60);
-        name.setBounds(100,110,200,40);
-        Name.setBounds(100,150,200,50);
-
-
-
-        ResultPanel.setPreferredSize(new Dimension(200,100));
-        ResultPanel.setLayout(null);
-
-        ResultPanel.add(Result);
-        ResultPanel.add(name);
-        ResultPanel.add(Name);
-
-
-
         JButton Save = new JButton("SAVE");
         JButton Cancel = new JButton("Cancel");
 
@@ -60,27 +56,22 @@ public class GameEndScreen extends JFrame {
         Cancel.setName("cancel");
 
         Save.putClientProperty("name",Name);
-
         Save.addActionListener(new EndListener());
         Cancel.addActionListener(new EndListener());
-
-
-        ResultPanel.setBounds(100,50,400,200);
-        buttonsPanel.setBounds(100,250,400,50);
-
 
         Save.setPreferredSize(new Dimension(100,20));
         Cancel.setPreferredSize(new Dimension(100,20));
 
-        buttonsPanel.setLayout(new FlowLayout());
+        endPanel.add(ResultPanel);
+        endPanel.add(buttonsPanel);
+
+        ResultPanel.add(Result);
+        ResultPanel.add(name);
+        ResultPanel.add(Name);
+
         buttonsPanel.add(Save);
         buttonsPanel.add(Cancel);
 
-
-
-
-        endPanel.add(ResultPanel);
-        endPanel.add(buttonsPanel);
 
 
         jFrame.add(endPanel);

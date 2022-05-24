@@ -10,119 +10,120 @@ public class View extends JFrame {
     static JFrame jFrame;
 
     public View() throws IOException, FontFormatException {
+
         jFrame = new JFrame();
 
         JPanel mainmenu = new JPanel();
-        JLabel Title = new JLabel();
         JPanel menuButtons = new JPanel();
-        JTextArea leaderboardText = new JTextArea();
-
-        jFrame.add(mainmenu);
-
         diffs = new JPanel();
         panel = new JPanel();
         LBpanel = new JPanel();
 
+        JLabel Title = new JLabel();
+        JTextArea leaderboardText = new JTextArea();
+
+
+        Font titleFont = Font.createFont(Font.TRUETYPE_FONT, getClass().getResourceAsStream("/font/DOOM-font.ttf"));
+                //https://stackoverflow.com/questions/21081586/using-a-custom-font-for-a-jlabel
+        GraphicsEnvironment genv = GraphicsEnvironment.getLocalGraphicsEnvironment();
+        genv.registerFont(titleFont);
+        titleFont = titleFont.deriveFont(150f);
+                //
+        Title.setText("Bill, The Duck Killer");
+        Title.setFont(titleFont);
+
+        menuButtons.setLayout(new BoxLayout(menuButtons, BoxLayout.PAGE_AXIS));
+        diffs.setLayout(new BoxLayout(diffs, BoxLayout.PAGE_AXIS));
+        panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
+
+        diffs.setVisible(false);
+
+
         JButton back = new JButton("back");
+        JButton Back = new JButton("back");
+        JButton Easy = new JButton("easy");
+        JButton Hard = new JButton("Hard");
+        JButton HELL = new JButton("HELL");
+        NewGame = new JButton("New Game");
+        Leaderboard = new JButton("Leaderboard");
+        Quit = new JButton("Quit");
+
+
         back.addActionListener(new lmenuListener());
         back.setName("back");
         back.putClientProperty("LBpanel",LBpanel);
         back.putClientProperty("panel",panel);
         back.putClientProperty("diffs",diffs);
 
-        JButton Back = new JButton("back");
         Back.addActionListener(new lmenuListener());
         Back.setName("back");
         Back.putClientProperty("LBpanel",LBpanel);
         Back.putClientProperty("panel",panel);
         Back.putClientProperty("diffs",diffs);
 
-        JButton Easy = new JButton("easy");
-        JButton Hard = new JButton("Hard");
-        JButton HELL = new JButton("HELL");
+        Easy.addActionListener(new lmenuListener());
+        Easy.setName("newgame1");
+        Easy.putClientProperty("diffs", diffs);
 
-        diffs.setLayout(new BoxLayout(diffs, BoxLayout.PAGE_AXIS));
+        Hard.addActionListener(new lmenuListener());
+        Hard.setName("newgame2");
+        Hard.putClientProperty("diffs", diffs);
+
+        HELL.addActionListener(new lmenuListener());
+        HELL.setName("newgame3");
+        HELL.putClientProperty("diffs", diffs);
+
+        Image img = ImageIO.read(gameScene.class.getResource("/icons/button.jpg"));
+
+        NewGame.addActionListener(new lmenuListener());
+        NewGame.setName("newgame");
+        NewGame.putClientProperty("panel", panel);
+        NewGame.putClientProperty("diffs", diffs);
+        NewGame.setContentAreaFilled(false);
+        NewGame.setIcon(new ImageIcon(img));
+
+        Leaderboard.addActionListener(new lmenuListener());
+        Leaderboard.setName("leaderboard");
+        Leaderboard.putClientProperty("lbText", leaderboardText);
+        Leaderboard.putClientProperty("LBpanel", LBpanel);
+        Leaderboard.putClientProperty("panel", panel);
+        Leaderboard.setContentAreaFilled(false);
+        Leaderboard.setIcon(new ImageIcon(img));
+
+        Quit.addActionListener(new lmenuListener());
+        Quit.setName("quit");
+        Quit.setContentAreaFilled(false);
+        Quit.setIcon(new ImageIcon(img));
+
+
+
+        mainmenu.add(panel);
+        mainmenu.add(diffs);
+        mainmenu.add(LBpanel);
+
+        menuButtons.add(NewGame);
+        menuButtons.add(Box.createVerticalStrut(50));
+        menuButtons.add(Leaderboard);
+        menuButtons.add(Box.createVerticalStrut(50));
+        menuButtons.add(Quit);
+
         diffs.add(Easy);
         diffs.add(Hard);
         diffs.add(HELL);
         diffs.add(Back);
 
-        Easy.setName("newgame1");
-        Hard.setName("newgame2");
-        HELL.setName("newgame3");
-
-
-        Easy.addActionListener(new lmenuListener());
-        Hard.addActionListener(new lmenuListener());
-        HELL.addActionListener(new lmenuListener());
-
-        Easy.putClientProperty("diffs", diffs);
-        Hard.putClientProperty("diffs", diffs);
-        HELL.putClientProperty("diffs", diffs);
-
-        diffs.setVisible(false);
-        mainmenu.add(diffs);
-
-        //buttons
-        NewGame = new JButton("New Game");
-        Leaderboard = new JButton("Leaderboard");
-        Quit = new JButton("Quit");
-
-
-        NewGame.setBorder(BorderFactory.createEmptyBorder());
-        NewGame.setContentAreaFilled(false);
-
-        Image img = ImageIO.read(gameScene.class.getResource("/icons/button.jpg"));
-        NewGame.setIcon(new ImageIcon(img));
-
-        Quit.setName("quit");
-        Quit.addActionListener(new lmenuListener());
-
-        Leaderboard.setName("leaderboard");
-        Leaderboard.addActionListener(new lmenuListener());
-        Leaderboard.putClientProperty("lbText", leaderboardText);
-        Leaderboard.putClientProperty("LBpanel", LBpanel);
-        Leaderboard.putClientProperty("panel", panel);
-
-
-        NewGame.setName("newgame");
-        NewGame.addActionListener(new lmenuListener());
-        NewGame.putClientProperty("panel", panel);
-        NewGame.putClientProperty("diffs", diffs);
-
-        Font titleFont = Font.createFont(Font.TRUETYPE_FONT, getClass().getResourceAsStream("/font/DOOM-font.ttf"));
-        //https://stackoverflow.com/questions/21081586/using-a-custom-font-for-a-jlabel
-        GraphicsEnvironment genv = GraphicsEnvironment.getLocalGraphicsEnvironment();
-        genv.registerFont(titleFont);
-        titleFont = titleFont.deriveFont(150f);
-        //
-
-
-        Title.setText("Bill, The Duck Killer");
-        Title.setFont(titleFont);
-        menuButtons.setLayout(new BoxLayout(menuButtons, BoxLayout.PAGE_AXIS));
-        menuButtons.add(NewGame);
-        menuButtons.add(Box.createVerticalStrut(15));
-
-        menuButtons.add(Box.createVerticalStrut(15));
-        menuButtons.add(Leaderboard);
-        menuButtons.add(Box.createVerticalStrut(50));
-        menuButtons.add(Quit);
-        panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
-
-
-        mainmenu.add(LBpanel);
-        LBpanel.setVisible(false);
-        LBpanel.add(leaderboardText);
-        LBpanel.add(back);
-
         panel.add(Title, BorderLayout.PAGE_START);
         panel.add(Box.createVerticalStrut(130));
         panel.add(menuButtons, BorderLayout.LINE_START);
 
+        LBpanel.setVisible(false);
+        LBpanel.add(leaderboardText);
+        LBpanel.add(back);
 
-        mainmenu.add(panel);
 
+
+
+        jFrame.add(mainmenu);
         jFrame.setResizable(false);
         jFrame.setSize(1400, 900);
         jFrame.setVisible(true);
