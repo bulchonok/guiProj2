@@ -13,6 +13,8 @@ public class gameScene extends JFrame {
     static List<JLabel> heartlist = new ArrayList<>();
     static LinkedList<JButton> buttonList = new LinkedList<JButton>();
     static LinkedList<JPanel> panellist = new LinkedList<JPanel>();
+    static LinkedList<JTextArea> userinvlist = new LinkedList<JTextArea>();
+    static Container container= new Container();
 
     static JFrame jFrame;
 
@@ -20,7 +22,7 @@ public class gameScene extends JFrame {
     static JPanel scene = new JPanel();
     static JPanel usersInv = new JPanel();
     static JTextArea jTextArea;
-    static JTextArea Timer,Score= new JTextArea();
+    static JTextArea Timer,Score;
 
     public gameScene() {
 
@@ -28,8 +30,12 @@ public class gameScene extends JFrame {
         panellist.add(GamePanel);
         panellist.add(scene);
         panellist.add(usersInv);
-         jTextArea = new JTextArea();
 
+        usersInv.setBackground(Color.yellow);
+        usersInv.setLayout(new FlowLayout(FlowLayout.LEFT));
+        usersInv.setPreferredSize(new Dimension(1000, 200));
+
+        jTextArea = new JTextArea();
         jTextArea.setText("your damage is:"+player.dmg+"your balance:"+player.money);
         jTextArea.setEditable(false);
 
@@ -51,13 +57,20 @@ public class gameScene extends JFrame {
         levelup.addActionListener(new playerActionListener());
         levelup.putClientProperty("dmgcounter", jTextArea);
 //
-        usersInv.setBackground(Color.yellow);
-        usersInv.setLayout(new FlowLayout(FlowLayout.LEFT));
-        usersInv.setPreferredSize(new Dimension(1000, 200));
+
 
         GamePanel.setBackground(Color.magenta);
         GamePanel.setLayout(null);
         GamePanel.setPreferredSize(new Dimension(1000, 700));
+
+        userinvlist.add(Score);
+        userinvlist.add(Timer);
+        userinvlist.add(jTextArea);
+
+        container.add(Score);
+        container.add(Timer);
+        container.add(jTextArea);
+        container.add(levelup);
 
         usersInv.add(Score);
         usersInv.add(Timer);

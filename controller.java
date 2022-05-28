@@ -33,23 +33,21 @@ public class controller extends JFrame {
     }
 
     public static void save(String name) throws IOException {
-        System.out.println("adsdad");
         leaderboard.updatelb("\n"+name+":"+gamescore);
     }
     public static void destroy(){
+        gameScene.usersInv.removeAll();
         for (int i = 0; i < gameScene.buttonList.size(); i++) {
-            gameScene.buttonList.get(0).setVisible(false);
-            gameScene.buttonList.get(0).setEnabled(false);
-            gameScene.jFrame.remove(gameScene.buttonList.get(0));
+            gameScene.buttonList.get(0).removeAll();
+            gameScene.buttonList.remove(gameScene.buttonList.get(0));
         }
+
         for (int i = 0; i < gameScene.panellist.size(); i++) {
+
             gameScene.panellist.get(0).removeAll();
             gameScene.panellist.remove(gameScene.panellist.get(0));
         }
-        for (int i = 0; i <gameScene.heartlist.size() ; i++) {
-            gameScene.heartlist.get(0).setVisible(false);
-            gameScene.heartlist.remove(gameScene.heartlist.get(0));
-        }
+
         for (int i = 0; i < Duck.ducklist.size() ; i++) {
             Duck.ducklist.get(i).setVisible(false);
             Duck.ducklist.remove( Duck.ducklist.get(0));
