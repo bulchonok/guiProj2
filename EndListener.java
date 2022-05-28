@@ -29,6 +29,7 @@ public class EndListener implements ActionListener {
 
                 }
             }
+        controller.destroy();
         GameEndScreen.jFrame.setVisible(false);
             try {
                 new View();

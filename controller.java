@@ -34,6 +34,9 @@ public class controller extends JFrame {
 
     public static void save(String name) throws IOException {
         System.out.println("adsdad");
+        leaderboard.updatelb("\n"+name+":"+gamescore);
+    }
+    public static void destroy(){
         for (int i = 0; i < gameScene.buttonList.size(); i++) {
             gameScene.buttonList.get(0).setVisible(false);
             gameScene.buttonList.get(0).setEnabled(false);
@@ -55,6 +58,5 @@ public class controller extends JFrame {
             Duck.aliveList.get(i).setVisible(false);
             Duck.aliveList.remove( Duck.aliveList.get(0));
         }
-        leaderboard.updatelb("\n"+name+":"+gamescore);
     }
 }
