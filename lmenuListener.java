@@ -39,10 +39,10 @@ public class lmenuListener implements ActionListener {
                         gamestart(1,diffs);
                     }
                  case "newgame2"->{
-                        gamestart(3,diffs);
+                        gamestart(2,diffs);
                     }
                  case "newgame3"->{
-                        gamestart(6,diffs);
+                        gamestart(4,diffs);
 
                     }
 
@@ -52,6 +52,7 @@ public class lmenuListener implements ActionListener {
     }
 
     static void gamestart(int diff, JPanel diffs){
+        cleaner.clean();
         MyThread thread = new MyThread(diff);
         GameThreadTimer gameThreadTimer = new GameThreadTimer();
 

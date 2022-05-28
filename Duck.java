@@ -5,10 +5,9 @@ import java.util.List;
 
 public class Duck extends JButton {
     static int indexCounter = 0, ducksAlive = 0, counter = 0;
-    int HP, money, index, x, y;
-    protected static int ducksKilled;
-    enum color {yellow, orange, red, purple, blue, lightblue, silver};
-    String DuckColor;
+    int HP, money, index, x, y, color;
+     static int ducksKilled;
+    int DuckColor;
 
     static List<Duck> ducklist = new ArrayList<>();
     static List<Duck> aliveList = new LinkedList<>();
@@ -30,28 +29,28 @@ public class Duck extends JButton {
         x = 0;
         y = (int)(counter*(Math.random()*5)) % 5 * 140;
 
-
+        color=difficulty;
         switch (difficulty) {
             case 1 -> {
-                this.DuckColor = "yellow";
+                this.DuckColor = 1;
             }
             case 2 -> {
-                this.DuckColor = "orange";
+                this.DuckColor = 2;
             }
             case 3 -> {
-                this.DuckColor = "red";
+                this.DuckColor = 3;
             }
             case 4 -> {
-                this.DuckColor = "purple";
+                this.DuckColor = 4;
             }
             case 5 -> {
-                this.DuckColor = "blue";
+                this.DuckColor = 5;
             }
             case 6 -> {
-                this.DuckColor = "lightblue";
+                this.DuckColor = 6;
             }
-            case 7 -> {
-                this.DuckColor = "silver";
+            case 7,8,9,10-> {
+                this.DuckColor = 7;
             }
         }
     }
@@ -77,6 +76,7 @@ public class Duck extends JButton {
     public boolean getDamage(int dmg, JButton button) {
         this.HP -= dmg;
             if (HP <= 0) {
+                player.moneyUp(this.color);
                 ducksKilled++;
                 ducksAlive--;
                 button.setVisible(false);

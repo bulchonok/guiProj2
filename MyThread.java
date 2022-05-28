@@ -1,5 +1,5 @@
 public class MyThread extends Thread {
-    protected static int difficulty = 1;
+     static int difficulty = 1;
     protected static int diffMultiplyer =1;
 
     public MyThread(int diff){
@@ -16,13 +16,13 @@ public class MyThread extends Thread {
         if (player.HP<=0) controller.killGameThread(this);
 
             try {
-                Thread.sleep(200 / (difficulty));   //speed{1;7}
+                Thread.sleep(250 / (difficulty*diffMultiplyer));   //speed{1;7}
                 counter++;
 
                 if ((counter%(100/diffMultiplyer))==0&&difficulty<10)difficulty++;
 
                     if(Duck.ducksAlive<5) {
-                        if ((counter%(11-difficulty)==0)&&(Math.random()*17)<12/((diffMultiplyer+1)/2)){
+                        if ((counter%4==0)&&(Math.random()*17)<14){
                             Duck duck=new Duck( difficulty );
                             gameScene.createDuck(duck);
                         }
@@ -56,6 +56,7 @@ public class MyThread extends Thread {
                     return;
                 }
             gameScene.GamePanel.updateUI();
+
         }
     }
 }

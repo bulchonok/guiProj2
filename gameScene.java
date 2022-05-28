@@ -12,22 +12,25 @@ public class gameScene extends JFrame {
 
     static List<JLabel> heartlist = new ArrayList<>();
     static LinkedList<JButton> buttonList = new LinkedList<JButton>();
+    static LinkedList<JPanel> panellist = new LinkedList<JPanel>();
 
     static JFrame jFrame;
 
     static JPanel GamePanel = new JPanel();
     static JPanel scene = new JPanel();
     static JPanel usersInv = new JPanel();
-
+    static JTextArea jTextArea;
     static JTextArea Timer,Score= new JTextArea();
 
     public gameScene() {
 
         jFrame = new JFrame();
+        panellist.add(GamePanel);
+        panellist.add(scene);
+        panellist.add(usersInv);
+         jTextArea = new JTextArea();
 
-        JTextArea jTextArea = new JTextArea();
-
-        jTextArea.setText("your damage is:" + player.dmg);
+        jTextArea.setText("your damage is:"+player.dmg+"your balance:"+player.money);
         jTextArea.setEditable(false);
 
         jTextArea.setBackground(usersInv.getBackground());
@@ -43,7 +46,7 @@ public class gameScene extends JFrame {
         Score.setPreferredSize(new Dimension(120, 60));
         Timer.setPreferredSize(new Dimension(100, 60));
 
-        JButton levelup = new JButton("dmg up");
+        JButton levelup = new JButton("Upgrade for 1$");
 
         levelup.addActionListener(new playerActionListener());
         levelup.putClientProperty("dmgcounter", jTextArea);
@@ -64,7 +67,12 @@ public class gameScene extends JFrame {
         scene.add(GamePanel);
         scene.add(usersInv);
 
-        showHP();
+        {
+            GamePanel.setVisible(true);
+            scene.setVisible(true);
+            usersInv.setVisible(true);
+            showHP();
+        }
 
         jFrame.add(scene);
 
@@ -118,13 +126,23 @@ public class gameScene extends JFrame {
         Test.setContentAreaFilled(false);
 
             try {
-                Image yellowDuck = ImageIO.read(gameScene.class.getResource("/icons/duck.gif"));
-                Image img = yellowDuck;
-                /*switch (arrOfDucks[0].DuckColor){
-                    case "yellow"->{
-                        img=yellowDuck;
-                    }
-                }*/
+                Image d1 = ImageIO.read(gameScene.class.getResource("/icons/Duck1.png"));
+                Image d2 = ImageIO.read(gameScene.class.getResource("/icons/Duck2.png"));
+                Image d3 = ImageIO.read(gameScene.class.getResource("/icons/Duck3.png"));
+                Image d4 = ImageIO.read(gameScene.class.getResource("/icons/Duck4.png"));
+                Image d5 = ImageIO.read(gameScene.class.getResource("/icons/Duck5.png"));
+                Image d6 = ImageIO.read(gameScene.class.getResource("/icons/Duck6.png"));
+                Image d7 = ImageIO.read(gameScene.class.getResource("/icons/Duck7.png"));
+                Image img = d1;
+                switch (duck.DuckColor){
+                    case 1->img=d1;
+                    case 2->img=d2;
+                    case 3->img=d3;
+                    case 4->img=d4;
+                    case 5->img=d5;
+                    case 6->img=d6;
+                    case 7,8,9,10->img=d7;
+                }
 
                 Test.setIcon(new ImageIcon(img));
                 Test.setName(String.valueOf(duck.index));

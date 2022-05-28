@@ -1,6 +1,6 @@
 
 public class GameThreadTimer extends Thread {
-    protected static int Time=0;
+     static int Time=0;
 
     public static int getTime() {
         return Time;

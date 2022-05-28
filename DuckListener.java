@@ -11,7 +11,7 @@ public class DuckListener implements ActionListener {
             if (!thisDuck.getDamage(player.dmg,duck)){
 
                 duck.setEnabled(false);
-                //getmoney
+
             }
         duck.setText(String.valueOf(thisDuck.HP));
     }

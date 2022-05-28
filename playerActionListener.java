@@ -9,8 +9,8 @@ public class playerActionListener implements ActionListener {
         JButton jButton = (JButton) e.getSource();
         JTextArea jTextArea=(JTextArea) jButton.getClientProperty("dmgcounter");
 
-        player.levelup();//button text:money needed for upgrade
-
-        jTextArea.setText("your damage is:"+player.dmg);
+        player.spendMoney();
+        jButton.setText("Upgrade for "+player.UpgradeCost+"$");
+        jTextArea.setText("your damage is:"+player.dmg+"your balance:"+player.money);
     }
 }

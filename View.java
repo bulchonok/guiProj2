@@ -11,6 +11,7 @@ public class View extends JFrame {
 
     public View() throws IOException, FontFormatException {
 
+
         jFrame = new JFrame();
 
         JPanel mainmenu = new JPanel();
