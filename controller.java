@@ -11,6 +11,7 @@ public class controller extends JFrame {
     public static void killGameThread(Thread thread) {
         thread.interrupt();
         gameScene.jFrame.setVisible(false);
+
         gameScene.jTextArea.remove(gameScene.jTextArea);
         if (!gameover){
             gameover=true;
@@ -32,6 +33,7 @@ public class controller extends JFrame {
     }
 
     public static void save(String name) throws IOException {
+        System.out.println("adsdad");
         for (int i = 0; i < gameScene.buttonList.size(); i++) {
             gameScene.buttonList.get(0).setVisible(false);
             gameScene.buttonList.get(0).setEnabled(false);

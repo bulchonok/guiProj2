@@ -9,7 +9,13 @@ public class EndListener implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         JButton jButton = (JButton) e.getSource();
         JTextField jTextField = (JTextField)jButton.getClientProperty("name");
-        String name = jTextField.getText();
+        String name;
+        try{
+        name = jTextField.getText();
+        }catch(NullPointerException eh){
+            name="Fujiko";
+        }
+
             switch (jButton.getName()){
                 case "save"->{
                     try {

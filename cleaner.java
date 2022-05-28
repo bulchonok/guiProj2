@@ -23,5 +23,6 @@ public class cleaner {
         player.UpgradeCost=1;
 
         MyThread.difficulty = 1;
+        System.out.println("succesful");
     }
 }
