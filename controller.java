@@ -33,7 +33,7 @@ public class controller extends JFrame {
     }
 
     public static void save(String name) throws IOException {
-        leaderboard.updatelb("\n"+name+":"+gamescore);
+        leaderboard.updatelb(name+":"+gamescore+"\n");
     }
     public static void destroy(){
         gameScene.usersInv.removeAll();
