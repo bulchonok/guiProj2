@@ -29,14 +29,18 @@ public class EndListener implements ActionListener {
 
                 }
             }
+        killer();
+    }
+
+    public static void killer() {
         controller.destroy();
-        GameEndScreen.jFrame.setVisible(false);
-            try {
-                new View();
-            } catch (IOException eh) {
-                eh.printStackTrace();
-            } catch (FontFormatException eh) {
-                eh.printStackTrace();
-            }
+        if(!bind.connection)GameEndScreen.jFrame.setVisible(false);
+        try {
+            new View();
+        } catch (IOException eh) {
+            eh.printStackTrace();
+        } catch (FontFormatException eh) {
+            eh.printStackTrace();
+        }
     }
 }

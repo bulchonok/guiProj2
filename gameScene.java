@@ -1,6 +1,10 @@
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.InputEvent;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -27,6 +31,9 @@ public class gameScene extends JFrame {
     public gameScene() {
 
         jFrame = new JFrame();
+
+        new bind();
+
         panellist.add(GamePanel);
         panellist.add(scene);
         panellist.add(usersInv);
@@ -36,7 +43,7 @@ public class gameScene extends JFrame {
         usersInv.setPreferredSize(new Dimension(1000, 200));
 
         jTextArea = new JTextArea();
-        jTextArea.setText("your damage is:"+player.dmg+"your balance:"+player.money);
+        jTextArea.setText("your damage is:"+player.dmg+" your balance:"+player.money);
         jTextArea.setEditable(false);
 
         jTextArea.setBackground(usersInv.getBackground());
@@ -56,12 +63,39 @@ public class gameScene extends JFrame {
 
         levelup.addActionListener(new playerActionListener());
         levelup.putClientProperty("dmgcounter", jTextArea);
+
 //
+        JButton Tree1 = new JButton();
+        JButton Tree2 = new JButton();
+        Tree t1 = new Tree(1);
+        Tree t2 = new Tree(2);
 
 
-        GamePanel.setBackground(Color.magenta);
+        Tree1.setBorder(BorderFactory.createEmptyBorder());
+        Tree1.setContentAreaFilled(false);
+        Tree2.setBorder(BorderFactory.createEmptyBorder());
+        Tree2.setContentAreaFilled(false);
+
+        Image tree = null;
+        try {
+            tree = ImageIO.read(gameScene.class.getResource("/icons/Tree.png"));
+        } catch (IOException e) {
+            e.printStackTrace();
+
+        }
+        Tree1.setIcon(new ImageIcon(tree));
+        Tree2.setIcon(new ImageIcon(tree));
+
+        Tree1.setBounds(t1.x,t1.y,t1.width,t1.hight);
+        Tree2.setBounds(t2.x,t2.y,t2.width,t2.hight);
+
+
+        GamePanel.setBackground(new Color(118, 158, 222));
         GamePanel.setLayout(null);
         GamePanel.setPreferredSize(new Dimension(1000, 700));
+
+        GamePanel.add(Tree1);
+        GamePanel.add(Tree2);
 
         userinvlist.add(Score);
         userinvlist.add(Timer);

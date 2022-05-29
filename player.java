@@ -8,7 +8,7 @@ public class player {
     public static void moneyUp(int mon){
         money+=mon;
         maxmoney+=mon;
-        gameScene.jTextArea.setText("your damage is:"+player.dmg+"your balance:"+player.money);
+        gameScene.jTextArea.setText("your damage is:"+player.dmg+" your balance:"+player.money);
     }
 
     public static void spendMoney(){
@@ -16,7 +16,7 @@ public class player {
             money-=UpgradeCost;
         UpgradeCost= UpgradeCost*2;
         levelup();
-        gameScene.jTextArea.setText("your damage is:"+player.dmg+"your balance:"+player.money);
+        gameScene.jTextArea.setText("your damage is:"+player.dmg+" your balance:"+player.money);
 
         }
 

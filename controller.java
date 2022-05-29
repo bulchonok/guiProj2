@@ -23,8 +23,13 @@ public class controller extends JFrame {
     public static void GameEnd() {
 
         gameScene.scene.setVisible(false);
+        if (!bind.connection){
         getGamescore();
         GameEndScreen gameEndScreen=new GameEndScreen(gamescore);
+        }else{
+            EndListener.killer();
+            bind.connection=false;
+        }
 
     }
 
